@@ -29,12 +29,15 @@
     "commander": "^2.9.0",
     "consolidate": "^0.14.1",
     "ejs": "^2.5.1",
+    "express": "^4.14.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "filegen": "^0.1.1",
     "mkdirp": "^0.5.1",
     "piping": "^1.0.0-rc.3",
     "strip-loader": "^0.1.2",
     "webpack": "^1.13.2",
+    "webpack-dev-middleware": "^1.6.1",
+    "webpack-hot-middleware": "^2.12.2",
     "webpack-isomorphic-tools": "^2.5.7"
   },
   "devDependencies": {
