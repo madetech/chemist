@@ -1,0 +1,15 @@
+import React, { PropTypes } from 'react'
+
+export default class <%= name %> extends React.Component {
+  static propTypes = {
+    <% for (var i = 0; i < propTypes.length; i++) {
+      %><%= propTypes[i].prop %>: PropTypes.<%= propTypes[i].type %><%= propTypes[i].required ? '.isRequired' : '' %><%= i + 1 < propTypes.length ? ",\n    " : '' %><%
+    } %>
+  }
+
+  render () {
+    return (
+      <div />
+    )
+  }
+}

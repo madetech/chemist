@@ -1,0 +1,5 @@
+@import "../../theme/variables";
+
+@mixin font-size($size) {
+  font-size: ($size/$base-font-size) * 1em;
+}

@@ -1,0 +1,19 @@
+import React from 'react'
+import { translate } from 'react-i18next'
+import { connect } from 'react-redux'
+import prefetch from 'chemist/helpers/prefetch'
+
+@translate()
+@prefetch(({ store }) => Promise.resolve())
+@connect(state => ({  }))
+export default class <%= name %> extends React.Component {
+  render () {
+    const { t } = this.props
+
+    return (
+      <section>
+        <h1><%= name %></h1>
+      </section>
+    )
+  }
+}

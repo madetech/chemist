@@ -1,0 +1,37 @@
+:global {
+  .t-title {
+    @include font-size(24px);
+
+    color: $grey-dark;
+    font-weight: 200;
+    letter-spacing: 0.02em;
+    margin: 0 0 5px;
+
+    @media (min-width: 768px) {
+      @include font-size(32px);
+    }
+  }
+
+  .t-title--secondary {
+    @include font-size(22px);
+
+    @media (min-width: 768px) {
+      @include font-size(24px);
+    }
+  }
+
+  .t-text {
+    color: $grey-dark;
+    font-weight: 200;
+    line-height: 1.29;
+    margin: 0 0 10px;
+  }
+
+  .t-small {
+    @include font-size(12px);
+  }
+
+  .t-text--secondary {
+    color: $grey;
+  }
+}

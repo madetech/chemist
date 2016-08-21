@@ -1,0 +1,14 @@
+const initialState = { fetching: false }
+
+export default function <%= name %> (state = initialState, action) {
+  switch (action.type) {
+    case '<%= name.toUpperCase() %>_FETCH':
+      return { ...state, fetching: true }
+    case '<%= name.toUpperCase() %>_FETCH_SUCCESS':
+      return { ...action.result, fetching: false }
+    case '<%= name.toUpperCase() %>_FETCH_FAILURE':
+      return { ...action.error, fetching: false }
+    default:
+      return state
+  }
+}

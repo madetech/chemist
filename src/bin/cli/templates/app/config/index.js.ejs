@@ -1,0 +1,30 @@
+const env = process.env.NODE_ENV || 'development'
+const environments = {
+  development: {
+    isProduction: false
+  },
+  production: {
+    isProduction: true
+  }
+}
+
+const defaults = {
+  host: process.env.HOST || 'localhost',
+  port: process.env.PORT || 3000,
+  apiHost: process.env.API_HOST || 'localhost',
+  apiPort: process.env.API_PORT || 3030,
+  webpackPort: 3001,
+  app: {
+    title: '<%= name %>',
+    description: '<%= name %>',
+    head: {
+      titleTemplate: '<%= name %> - %s',
+      meta: [
+        { name: 'description', content: '<%= name %>' },
+        { charset: 'utf-8' }
+      ]
+    }
+  },
+}
+
+module.exports = Object.assign(defaults, environments[env])

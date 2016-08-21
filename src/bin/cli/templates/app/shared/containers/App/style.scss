@@ -1,0 +1,23 @@
+@import "../../theme/global";
+@import "../../theme/typography";
+
+.app {
+  background: $white;
+}
+
+:global {
+  body {
+    background: $grey-lightest;
+    color: $grey-dark;
+    font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-size: $base-font-size;
+    line-height: 1.428;
+    margin: 0;
+    min-width: 320px;
+    padding: 0;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+}
