@@ -3,7 +3,7 @@ import filegen from 'filegen'
 import * as Logger from '../helpers/logger'
 
 const gen = filegen({
-  templatesDir: path.join(__dirname, '../templates'),
+  templatesDir: path.join(__dirname, '../../../../templates'),
   cwd: process.cwd()
 }, {
   component ({ name, options }) {
