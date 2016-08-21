@@ -3,4 +3,3 @@ node_modules/
 webpack-assets.json
 webpack-stats.json
 npm-debug.log
-static/styleguide/
