@@ -1,5 +1,5 @@
 import path from 'path'
-import webpackConfig from 'chemist/config/webpack/webpack-isomorphic-tools'
+import webpackConfig from 'chemist/dist/config/webpack/webpack-isomorphic-tools'
 import config from '../config'
 import startTestServers from './helper/startTestServers'
 import renderingServer from '../server/app'

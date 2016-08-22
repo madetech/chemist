@@ -15,8 +15,8 @@
     "lint": "npm run lint:js && npm run lint:scss",
     "lint-js": "eslint -c .eslintrc api server shared test",
     "lint-scss": "stylelint shared/**/*.scss --syntax scss",
-    "test": "BABEL_DISABLE_CACHE=1 NODE_ENV=test PORT=3000 API_HOST=localhost API_PORT=3030 mocha --require ignore-styles --require ./mocha-react-feature  --require test/testHelper --reporter mocha-react-feature/dist/reporter --compilers js:babel-core/register test/hooks.js $(find shared -name '*.test.js') $(find test -name '*.test.js')",
-    "test-only": "BABEL_DISABLE_CACHE=1 NODE_ENV=test PORT=3000 API_HOST=localhost API_PORT=3030 mocha --require ignore-styles --require ./mocha-react-feature  --require test/testHelper --reporter mocha-react-feature/dist/reporter --compilers js:babel-core/register test/hooks.js "
+    "test": "BABEL_DISABLE_CACHE=1 NODE_ENV=test PORT=3000 API_HOST=localhost API_PORT=3030 mocha --require ignore-styles --require mocha-react-feature  --require test/testHelper --reporter mocha-react-feature/dist/reporter --compilers js:babel-core/register test/hooks.js $(find shared -name '*.test.js') $(find test -name '*.test.js')",
+    "test-only": "BABEL_DISABLE_CACHE=1 NODE_ENV=test PORT=3000 API_HOST=localhost API_PORT=3030 mocha --require ignore-styles --require mocha-react-feature  --require test/testHelper --reporter mocha-react-feature/dist/reporter --compilers js:babel-core/register test/hooks.js "
   },
   "dependencies": {
     "babel-core": "^6.5.2",
