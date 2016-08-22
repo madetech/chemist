@@ -4,6 +4,7 @@ import WebpackIsomorphicTools from 'webpack-isomorphic-tools'
 import webpackIsoConfig from '../../../config/webpack/webpack-isomorphic-tools'
 
 export default function serveApp () {
+  const babelrc = require('../../../config/loadBabelrc')()
   const serverPath = path.join(process.cwd(), './server')
 
   global.__CLIENT__ = false
@@ -20,6 +21,7 @@ export default function serveApp () {
     if (!pipes) return
   }
 
+  require('babel-register')(babelrc)
   global.webpackIsomorphicTools = new WebpackIsomorphicTools(webpackIsoConfig)
     .development(__DEVELOPMENT__)
     .server(process.cwd(), () => require(serverPath))
