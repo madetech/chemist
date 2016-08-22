@@ -23,6 +23,7 @@
   "author": "Richard Foster <richard@madetech.com> (http://www.madetech.com)",
   "license": "MIT",
   "dependencies": {
+    "babel-polyfill": "^6.3.14",
     "babel-register": "^6.11.6",
     "chalk": "^1.1.3",
     "clean-webpack-plugin": "^0.1.10",
