@@ -10,7 +10,7 @@ export default class App extends React.Component {
     return (
       <div>
         <Helmet {...config.app.head} />
-        <div styleName="app">
+        <div styleName="appContent">
           {this.props.children}
         </div>
       </div>
