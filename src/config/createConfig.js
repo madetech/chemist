@@ -10,17 +10,15 @@ const pairs = (a, b) =>
 export default function createConfig (sources) {
   return function config (name) {
     const envs = ['default', process.env.NODE_ENV]
-    const configs = pairs(sources, envs).map(({ source, env }) => {
+    return pairs(sources, envs).reduce((currentConfig, { source, env }) => {
       if (!source || !env || !name) return {}
       const configPath = path.join(source, env, name)
 
       try {
-        return require(configPath)
+        return require(configPath)(currentConfig)
       } catch (e) {
-        return {}
+        return currentConfig
       }
-    })
-
-    return Object.assign({}, ...configs)
+    }, {})
   }
 }

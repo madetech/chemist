@@ -1,3 +1,3 @@
-export default {
-  b: 12
+export default function (config) {
+  return Object.assign({}, config, { b: 12 })
 }

@@ -1,5 +1,7 @@
-export default {
-  a: 1,
-  b: 2,
-  c: 3
+export default function () {
+  return {
+    a: 1,
+    b: 2,
+    c: 3
+  }
 }
