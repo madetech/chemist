@@ -14,7 +14,7 @@
     "url": "https://www.github.com/madetech/chemist.git"
   },
   "scripts": {
-    "test": "mocha --compilers js:babel-register --require test/testHelper.js",
+    "test": "mocha --compilers js:babel-register --require test/testHelper.js test/hooks.js test/**/*.test.js",
     "build": "babel src/ -d dist/",
     "prepublish": "npm run build",
     "lint": "eslint -c .eslintrc src/"
@@ -62,6 +62,8 @@
     "eslint-plugin-import": "^1.13.0",
     "eslint-plugin-jsx-a11y": "^2.1.0",
     "eslint-plugin-react": "^6.1.2",
-    "mocha": "^3.0.2"
+    "mocha": "^3.0.2",
+    "promise": "^7.1.1",
+    "rimraf": "^2.5.4"
   }
 }
