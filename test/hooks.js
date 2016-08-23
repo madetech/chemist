@@ -5,7 +5,7 @@ import rimraf from 'rimraf'
 const cwd = path.join(__dirname, '../')
 
 const scaffold = cb =>
-  fork('dist/bin/cli', ['new', 'test-app'], { cwd })
+  fork('dist/bin/cli', ['new', 'test-app'], { cwd, silent: true })
     .on('close', cb)
 
 const build = cb =>
