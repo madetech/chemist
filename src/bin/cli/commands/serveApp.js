@@ -1,10 +1,13 @@
 import path from 'path'
 import piping from 'piping'
 import WebpackIsomorphicTools from 'webpack-isomorphic-tools'
-import webpackIsoConfig from '../../../config/webpack/webpack-isomorphic-tools'
+import config from '../../../config'
+
+const webpackIsoConfig = config('webpack-isomorphic-tools')
 
 export default function serveApp () {
   const babelrc = require('../../../config/loadBabelrc')()
+
   const serverPath = path.join(process.cwd(), './server')
 
   global.__CLIENT__ = false

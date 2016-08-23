@@ -30,7 +30,7 @@
         [
           "babel-plugin-webpack-loaders",
           {
-            "config": "node_modules/chemist/dist/config/webpack/test.config.js",
+            "config": "node_modules/chemist/dist/config/test/webpack.js",
             "verbose": false
           }
         ]

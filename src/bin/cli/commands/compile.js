@@ -1,11 +1,11 @@
 import webpack from 'webpack'
+import config from '../../../config'
 import * as Logger from '../helpers/logger'
 
 export default function compile () {
   process.env.NODE_ENV = process.env.NODE_ENV || 'production'
-  const config = require('../../../config/webpack/production.config')
 
-  webpack(config, function (err, stats) {
+  webpack(config('webpack'), function (err, stats) {
     if (err) throw err
 
     const { errors, warnings, assetsByChunkName } = stats.toJson()

@@ -4,21 +4,25 @@ import express from 'express'
 import webpack from 'webpack'
 import webpackDevMiddleware from 'webpack-dev-middleware'
 import webpackHotMiddleware from 'webpack-hot-middleware'
+import config from '../../../config'
 import * as Logger from '../helpers/logger'
 
 const configPath = path.join(process.cwd(), './config')
-let config = {}
+
+let appConfig = {}
+
 if (fs.existsSync(configPath)) {
-  config = require(configPath)
+  appConfig = require(configPath)
 }
 
 export default function watch () {
+  process.env.NODE_ENV = 'development'
   process.env.UV_THREADPOOL_SIZE = 100
-  const webpackConfig = require('../../../config/webpack/development.config')
+  const webpackConfig = config('webpack')
 
   const compiler = webpack(webpackConfig)
-  const host = config.host || 'localhost'
-  const port = config.webpackPort || 3001
+  const host = appConfig.host || 'localhost'
+  const port = appConfig.webpackPort || 3001
   const app = express()
 
   const serverOptions = {

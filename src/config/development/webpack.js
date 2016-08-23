@@ -1,9 +1,10 @@
 import path from 'path'
 import webpack from 'webpack'
 import WebpackIsomorphicToolsPlugin from 'webpack-isomorphic-tools/plugin'
-import webpackIsoConfig from './webpack-isomorphic-tools'
+import config from '../'
 import loadBabelrc from '../loadBabelrc'
 
+const webpackIsoConfig = config('webpack-isomorphic-tools')
 const assetsPath = path.resolve(process.cwd(), './static/dist')
 const host = (process.env.HOST || 'localhost')
 const port = (+process.env.PORT + 1) || 3001
