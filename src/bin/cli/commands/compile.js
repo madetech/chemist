@@ -12,6 +12,6 @@ export default function compile () {
     if (errors.length > 0) errors.map(webpackError => Logger.error(webpackError))
     if (warnings.length > 0) warnings.map(webpackWarning => Logger.warn(webpackWarning))
 
-    Logger.success(`Succesfully compiled ${assetsByChunkName.main.join(', ')}`)
+    Logger.success(`Succesfully compiled ${assetsByChunkName.main}`)
   })
 }
