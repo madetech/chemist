@@ -28,13 +28,13 @@ module.exports = function loadBabelrc ({ client = false } = {}) {
     config = JSON.parse(fs.readFileSync(babelrcPath))
   }
 
-  const envConfig = (config.env && config.env.development) || {}
+  const env = process.env.NODE_ENV
+  const envConfig = (config.env && config.env[env]) || {}
   const plugins = [...(config.plugins || []), ...(envConfig.plugins || [])]
   const babelrc = Object.assign({}, config, envConfig, { plugins })
   delete babelrc.env
 
-  if (!client) return babelrc
+  if (client) babelrc.plugins.push(reactHmrPlugin(babelrc.plugins))
 
-  babelrc.plugins.push(reactHmrPlugin(babelrc.plugins))
   return babelrc
 }
