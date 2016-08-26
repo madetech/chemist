@@ -11,7 +11,7 @@ export default function createConfig (sources) {
   return function config (name) {
     const envs = ['default', process.env.NODE_ENV]
     return pairs(sources, envs).reduce((currentConfig, { source, env }) => {
-      if (!source || !env || !name) return {}
+      if (!source || !env || !name) return currentConfig
       const configPath = path.join(source, env, name)
 
       try {
