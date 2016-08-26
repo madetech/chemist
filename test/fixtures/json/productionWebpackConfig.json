@@ -67,7 +67,7 @@
     "options": {
       "allChunks": true
     },
-    "id": 1
+    "id": 2
   }, {
     "definitions": {
       "process.env": {
