@@ -14,7 +14,7 @@
     "url": "https://www.github.com/madetech/chemist.git"
   },
   "scripts": {
-    "test": "mocha --compilers js:babel-register --require test/testHelper.js --recursive test",
+    "test": "mocha --compilers js:babel-register --require test/testHelper.js --recursive test/unit test/*.js",
     "build": "babel src/ -d dist/",
     "prepublish": "npm run build",
     "lint": "eslint -c .eslintrc src/"
