@@ -1,0 +1,98 @@
+{
+  "devtool": "inline-source-map",
+  "context": "/Users/richardfoster/code/chemist",
+  "entry": {
+    "main": ["webpack-hot-middleware/client?path=http://localhost:3001/__webpack_hmr", "./client/index.js"]
+  },
+  "output": {
+    "path": "/Users/richardfoster/code/chemist/static/dist",
+    "filename": "[name]-[hash].js",
+    "chunkFilename": "[name]-[chunkhash].js",
+    "publicPath": "http://localhost:3001/dist/"
+  },
+  "module": {
+    "loaders": [{
+      "test": {},
+      "exclude": {},
+      "loader": "i18next-resource-store-loader"
+    }, {
+      "test": {},
+      "exclude": {},
+      "loaders": ["babel?{\"presets\":[\"stage-0\",\"react\",\"es2015\"],\"plugins\":[\"add-module-exports\",\"transform-runtime\",\"transform-class-properties\",\"transform-decorators-legacy\",\"transform-react-display-name\",[\"react-transform\",{\"transforms\":[{\"transform\":\"react-transform-hmr\",\"imports\":[\"react\"],\"locals\":[\"module\"]}]}]]}", "eslint-loader"]
+    }, {
+      "test": {},
+      "loader": "json-loader"
+    }, {
+      "test": {},
+      "exclude": {},
+      "loader": "style!css?modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]!autoprefixer?browsers=last 2 version!sass?outputStyle=expanded&sourceMap"
+    }, {
+      "test": {},
+      "include": {},
+      "loader": "style!sass?outputStyle=expanded&sourceMap"
+    }, {
+      "test": {},
+      "loader": "url?limit=10000&mimetype=application/font-woff"
+    }, {
+      "test": {},
+      "loader": "url?limit=10000&mimetype=application/font-woff"
+    }, {
+      "test": {},
+      "loader": "url?limit=10000&mimetype=application/octet-stream"
+    }, {
+      "test": {},
+      "loader": "file"
+    }, {
+      "test": {},
+      "loader": "url?limit=10000&mimetype=image/svg+xml"
+    }, {
+      "test": {},
+      "loader": "url-loader?limit=10240"
+    }]
+  },
+  "progress": true,
+  "resolve": {
+    "modulesDirectories": ["shared", "node_modules"],
+    "extensions": ["", ".json", ".js", ".jsx"]
+  },
+  "plugins": [{}, {
+    "resourceRegExp": {}
+  }, {
+    "definitions": {
+      "__CLIENT__": true,
+      "__SERVER__": false,
+      "__DEVELOPMENT__": true,
+      "__TEST__": false
+    }
+  }, {
+    "options": {
+      "assets": {
+        "images": {
+          "extensions": ["jpeg", "jpg", "png", "gif"]
+        },
+        "fonts": {
+          "extensions": ["woff", "woff2", "ttf", "eot"]
+        },
+        "svg": {
+          "extensions": ["svg"]
+        },
+        "style_modules": {
+          "extensions": ["scss"]
+        }
+      },
+      "webpack_assets_file_path": "webpack-assets.json",
+      "webpack_stats_file_path": "webpack-stats.json",
+      "development": true
+    },
+    "log": {
+      "options": {},
+      "preamble": "[webpack-isomorphic-tools/plugin]"
+    },
+    "regular_expressions": {
+      "images": {},
+      "fonts": {},
+      "svg": {},
+      "style_modules": {}
+    }
+  }]
+}

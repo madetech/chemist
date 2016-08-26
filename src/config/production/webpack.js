@@ -4,12 +4,13 @@ import CleanPlugin from 'clean-webpack-plugin'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import WebpackIsomorphicToolsPlugin from 'webpack-isomorphic-tools/plugin'
 import strip from 'strip-loader'
-import webpackIsoConfig from './webpack-isomorphic-tools'
+import config from '../'
 
 const assetsPath = path.resolve(process.cwd(), './static/dist')
+const webpackIsoConfig = config('webpack-isomorphic-tools')
 const webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(webpackIsoConfig)
 
-module.exports = function () {
+export default function () {
   return {
     devtool: 'source-map',
     context: process.cwd(),
