@@ -1,3 +1,13 @@
+function captureError (error) {
+  return new Promise(function (accept) {
+    if (!error.response) return accept({ error })
+
+    return error.response.json()
+      .then(json => accept({ error, result: json }))
+      .catch(() => accept({ error }))
+  })
+}
+
 export default function requestMiddleware (helpers = {}) {
   return ({ dispatch, getState }) => next => action => {
     if (typeof action === 'function') {
@@ -15,7 +25,7 @@ export default function requestMiddleware (helpers = {}) {
 
     return promise({ ...helpers, dispatch }).then(
       (result) => next({ ...rest, result, type: SUCCESS }),
-      (error) => next({ ...rest, error, type: FAILURE })
+      (error) => captureError(error).then(error => next({ ...rest, ...error, type: FAILURE }))
     ).catch((error) => {
       console.error('MIDDLEWARE ERROR:', error)
       next({ ...rest, error, type: FAILURE })
