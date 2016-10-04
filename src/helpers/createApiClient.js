@@ -6,7 +6,7 @@ function absoluteUrl (path, config) {
 function requestOptions (config) {
   const options = { mode: 'cors', credentials: 'same-origin', headers: {} }
   const cookie = __SERVER__
-    ? config.req && config.req.get('cookie')
+    ? config.req && config.req.headers && config.req.headers.cookie
     : document && document.cookie
 
   if (cookie) options.headers.Cookie = cookie
