@@ -10,13 +10,15 @@ const DEFAULTS = {
   detector: {
     lookupQuerystring: 'locale',
     order: ['querystring']
-  }
+  },
+  detectors: []
 }
 
 export default function (config = {}) {
   const options = extend(true, {}, DEFAULTS, config)
   return function localisation (req, res, next) {
     const detector = new LanguageDetector(null, options.detector)
+    options.detectors.forEach(::detector.addDetector)
 
     configureI18n(options, instance => instance.use(detector))
       .then(i18n => middleware(i18n)(req, res, next))
