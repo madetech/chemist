@@ -11,7 +11,14 @@ import HTMLComponent from './HTMLComponent'
 import ServerApp from './ServerApp'
 
 export default function (options) {
-  const { client, configureStore, configureRoutes, stylesheet, webpackIsomorphicTools } = options
+  const {
+    appConfig,
+    client,
+    configureStore,
+    configureRoutes,
+    stylesheet,
+    webpackIsomorphicTools
+  } = options
 
   return function rendering (req, res) {
     if (__DEVELOPMENT__ && webpackIsomorphicTools) {
@@ -27,6 +34,7 @@ export default function (options) {
       const html = ReactDOM.renderToStaticMarkup(
         <HTMLComponent
           {...props}
+          appConfig={appConfig}
           assets={webpackIsomorphicTools.assets()}
           store={store}
           i18n={req.i18n}
@@ -58,6 +66,7 @@ export default function (options) {
             const statusCode = notFound ? 404 : 200
             const component = (
               <ServerApp
+                appConfig={appConfig}
                 renderProps={renderProps}
                 req={req}
                 store={store}

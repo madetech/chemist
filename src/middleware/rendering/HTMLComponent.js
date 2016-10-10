@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/server'
 import serialize from 'serialize-javascript'
 import Helmet from 'react-helmet'
 
-export default function HTMLComponent ({ assets, component, store, i18n, stylesheet }) {
+export default function HTMLComponent ({ appConfig, assets, component, store, i18n, stylesheet }) {
   const content = component ? ReactDOM.renderToString(component) : ''
   const head = !__TEST__ && Helmet.rewind()
 
@@ -44,6 +44,10 @@ export default function HTMLComponent ({ assets, component, store, i18n, stylesh
         />
         <script
           dangerouslySetInnerHTML={{ __html: `window.__locale='${i18n.language}'` }}
+          charSet="UTF-8"
+        />
+        <script
+          dangerouslySetInnerHTML={{ __html: `window.__appConfig='${serialize(appConfig)}'` }}
           charSet="UTF-8"
         />
         <script src={assets.javascript.main} charSet="UTF-8" />
