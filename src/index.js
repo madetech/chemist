@@ -1,3 +1,5 @@
+export AppConfigProvider from './helpers/AppConfigProvider'
 export createApiClient from './helpers/createApiClient'
+export configurable from './helpers/configurable'
 export requestMiddleware from './store/requestMiddleware'
 export renderingMiddleware from './middleware/rendering'
