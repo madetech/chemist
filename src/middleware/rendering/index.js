@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/server'
 import cookie from 'react-cookie'
+import chalk from 'chalk'
 import { match } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 import { loadOnServer } from 'redux-connect'
@@ -20,7 +21,7 @@ export default function (options) {
     webpackIsomorphicTools
   } = options
 
-  return function rendering (req, res) {
+  return function rendering (req, res, next) {
     if (__DEVELOPMENT__ && webpackIsomorphicTools) {
       webpackIsomorphicTools.refresh()
     }
@@ -30,8 +31,8 @@ export default function (options) {
     const history = syncHistoryWithStore(memoryHistory, store)
     const unplug = cookie.plugToRequest(req, res)
 
-    function renderPage (status, props = {}) {
-      const html = ReactDOM.renderToStaticMarkup(
+    function renderPage (props) {
+      return ReactDOM.renderToStaticMarkup(
         <HTMLComponent
           {...props}
           appConfig={appConfig}
@@ -41,9 +42,17 @@ export default function (options) {
           stylesheet={stylesheet}
         />
       )
+    }
 
-      res.status(status).send(`<!doctype html>\n${html}`)
-      unplug()
+    function renderAndRespond (status, props = {}) {
+      try {
+        const html = renderPage(props)
+        res.status(status).send(`<!doctype html>\n${html}`)
+        unplug()
+      } catch (e) {
+        console.error(chalk.red('Chemist could not render the page.'))
+        next(e)
+      }
     }
 
     const routeConfig = {
@@ -57,7 +66,7 @@ export default function (options) {
         res.redirect(redirectLocation.pathname + redirectLocation.search)
         unplug()
       } else if (error) {
-        renderPage(500)
+        renderAndRespond(500)
       } else if (renderProps) {
         loadOnServer({ ...renderProps, store, helpers: { client } })
           .then(() => loadNamespaces({ ...renderProps, i18n: req.i18n }))
@@ -74,7 +83,7 @@ export default function (options) {
             )
 
             global.navigator = { userAgent: req.headers['user-agent'] }
-            renderPage(statusCode, { component })
+            renderAndRespond(statusCode, { component })
           })
           .catch(err => { throw err })
       }
