@@ -16,7 +16,6 @@ export default function HTMLComponent ({ appConfig, assets, component, store, i1
         {head && head.link.toComponent()}
         {head && head.script.toComponent()}
 
-        <link rel="shortcut icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         {/* Production */}
