@@ -13,11 +13,12 @@ export default function watch () {
   const serverConfig = config('webpack-dev-server')
 
   const compiler = webpack(webpackConfig)
-  const port = appConfig.webpackPort || 3001
+  const port = process.env.WEBPACK_DEV_PORT || appConfig.webpackPort || 3001
   const app = express()
 
   app.use(webpackDevMiddleware(compiler, serverConfig))
   app.use(webpackHotMiddleware(compiler))
+
   app.listen(port, function (err) {
     if (err) {
       Logger.error(err)

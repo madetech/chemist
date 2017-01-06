@@ -1,6 +1,6 @@
 {
   "name": "chemist",
-  "version": "0.7.3",
+  "version": "0.8.0",
   "description": "An opinionated React framework",
   "main": "dist/index.js",
   "bin": {
