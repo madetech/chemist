@@ -14,6 +14,7 @@ import ServerApp from './ServerApp'
 export default function (options) {
   const {
     appConfig,
+    bodyClass,
     client,
     configureStore,
     configureRoutes,
@@ -37,6 +38,7 @@ export default function (options) {
           {...props}
           appConfig={appConfig}
           assets={webpackIsomorphicTools.assets()}
+          bodyClass={bodyClass}
           store={store}
           i18n={req.i18n}
           stylesheet={stylesheet}

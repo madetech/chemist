@@ -3,7 +3,15 @@ import ReactDOM from 'react-dom/server'
 import serialize from 'serialize-javascript'
 import Helmet from 'react-helmet'
 
-export default function HTMLComponent ({ appConfig, assets, component, store, i18n, stylesheet }) {
+export default function HTMLComponent ({
+  appConfig,
+  bodyClass = '',
+  assets,
+  component,
+  store,
+  i18n,
+  stylesheet
+}) {
   const content = component ? ReactDOM.renderToString(component) : ''
   const head = !__TEST__ && Helmet.rewind()
 
@@ -35,7 +43,7 @@ export default function HTMLComponent ({ appConfig, assets, component, store, i1
           ? <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
           : null }
       </head>
-      <body>
+      <body className={bodyClass}>
         <div id="content" dangerouslySetInnerHTML={{ __html: content }} />
         <script
           dangerouslySetInnerHTML={{ __html: `window.__data=${serialize(store.getState())};` }}
